@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Actividad 6</title>
+    <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@700&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body{
+            font-family: 'Montserrat', sans-serif;
+        }
+        img{
+            width:100%;
+        }
+        .boton{
+          width: 150px;
+          background-color: green solid;
+          border: 6px;
+          border-radius: 12px;
+          padding:6px;
+        }
+        section{
+            display:flex;
+            align-items:flex-end;
+        }
+        .descripcion{
+            text-align:center;
+        }
+        .precio{
+            font-family: 'Glegoo';
+            font-size:1.8em;
+            flex:1;
+            align-self:flex-start;
+            margin-right:15px;
+        }
+        .imagen {
+            width:50%;
+        }
+        .imagen2{
+            width:30%;
+        }
+        /* Propiedades iniciales (antes del primer clic: color verde)*/
+
+        .fase0{
+            width:150px;
+            background-color:#cddc39;
+            border:6px green solid;
+            border-radius:12px;
+            padding:2px 15px 8px;
+        }
+
+
+        /* Primer clic (color: azul)*/
+        .fase1{
+            width:150px;
+            background-color:#2196f3;
+            border:none;
+            border-radius:0;
+            padding:10px;
+            color:white
+        }
+
+
+        /* Segundo clic (color: violeta)*/
+        .fase3{
+            width:200px;
+            background-color:#9c27b0;
+            font-size:1em;
+            border:none;
+            border-radius:0;
+            padding:6px;
+            color:white;
+        }
+
+    </style>
+    <script type="text/javascript">
+        window.onload=inicio;
+        let bt;
+        let veces=0;
+
+        function inicio(){
+          bt=document.querySelector(".boton");
+          bt.onclick=modificar;
+          fase0();
+        }
+
+        /*gestina todo  tiene que saber las veces he hecho clic*/
+        function modificar(){
+            veces++;
+            if(veces==1){
+              document.querySelector(".precio").innerHTML=`5€`;
+              document.querySelector(".descripcion").innerHTML=`Cafe para llevar`;
+              //dentro de la caja img buscaralo que hay dentro
+              document.querySelector(".imagen img").src=`https://www.html6.es/img/cafe2`;
+              bt.classList.add('fase1');
+            }else if(veces==2){
+              document.querySelector(".precio").innerHTML=`10€`;
+              document.querySelector(".descripcion").innerHTML=`Desayuno Conan`;
+              //el padre le digo quiero que insertes un elemento como una imagen dentro de un div para tener mas control
+              document.querySelector("section").insertAdjacentHTML("beforeend",`<div class="imagen2"><img src="https://www.html6.es/img/pasta.png"></div>`);
+              bt.classList.add('fase3');
+            }else{
+              //para volver al principio inicial
+              bt.classList.remove('fase1');
+              bt.classList.remove('fase3');
+              fase0();
+              veces=0;
+            }
+        }
+
+        function fase0(){
+          //entre dentro de este boton y rellene contenido que hemos copiado
+          bt.innerHTML=`
+            <section>
+            <div class="precio"></div>
+            <div class="imagen"></div>
+            </section>
+            <div class="descripcion"></div>
+        `
+        document.querySelector(".precio").innerHTML=`2€`;
+        document.querySelector(".descripcion").innerHTML=`Cafe de Colombia`;
+        document.querySelector(".imagen").innerHTML=`<img  src="https://www.html6.es/img/cafe1.png">`;
+        bt.classList.add("fase0");
+        }
+
+    </script>
+</head>
+<body>
+    <div class="boton">
+        <!--
+            <section>
+                <div class="precio"></div>
+                <div class="imagen"></div>
+            </section>
+            <div class="descripcion"></div>
+        -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+img{
+    width: 100%;
+}
+section{
+  //los dos hijos se ponen a la derecha uno allado del otro
+    display:flex;
+    align-items: flex-end;
+}
+.boton{
+    width: 200px;
+    background-color: #92c27b0;
+    font-size: 1em;
+    border: none ;
+    border-radius: 0px;
+    padding: 6px;
+    color: white ;
+}
+.descripcion{
+    text-align: center;
+}
+.precio{
+    font-family: 'Glegoo';
+    font-size: 1.8em;
+    flex:1;//coje el20por cien del espacio deja su otro hermano
+    align-self: flex-start;
+    margin-right: 15px;
+}
+.imagen{
+    width: 50%;
+}
+.imagen2{
+    width: 30%;
+}
